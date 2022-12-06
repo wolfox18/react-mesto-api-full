@@ -1,0 +1,15 @@
+.signform__link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  text-align: center;
+
+  color: #ffffff;
+  padding: 15px 0 0;
+  margin: 0;
+
+  text-decoration: none;
+}

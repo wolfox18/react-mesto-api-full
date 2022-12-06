@@ -1,0 +1,8 @@
+.transparent-btn {
+    transition: opacity 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.transparent-btn:hover {
+    opacity: 0.6;
+}

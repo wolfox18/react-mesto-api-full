@@ -1,0 +1,20 @@
+.profile__post-add {
+    border: 2px solid #FFFFFF;
+    padding: 0;
+    width: 150px;
+    height: 50px;
+    border-radius: 2px;
+    background-color: black;
+    background-image: url('../../../images/add.svg');
+    background-position: 50%;
+    background-repeat: no-repeat;
+    flex-shrink: 0;
+}
+
+@media screen and (max-width: 1023px){
+    .profile__post-add{
+        width: 100%;
+        max-width: 282px;
+        background-size: 16px;
+    }
+}

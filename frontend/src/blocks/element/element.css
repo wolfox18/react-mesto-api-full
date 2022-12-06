@@ -1,0 +1,7 @@
+.element {
+    background: #FFFFFF;
+    border-radius: 10px;
+    font-size: 0;
+    max-width: 282px;
+    position: relative;
+}

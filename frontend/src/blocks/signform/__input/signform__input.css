@@ -1,0 +1,17 @@
+.signform__input {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #cccccc;
+  padding: 30px 0 13px;
+  background-color: #000;
+  border: none;
+  border-bottom: #cccccc solid 1px;
+}
+
+.signform__input:focus-visible {
+  outline: none;
+}

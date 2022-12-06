@@ -1,0 +1,15 @@
+.header__link {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  min-width: 56px;
+  padding: 0 0 0 24px;
+  text-align: right;
+  color: #a9a9a9;
+
+  border: none;
+  background-color: transparent;
+  text-decoration: none;
+}
