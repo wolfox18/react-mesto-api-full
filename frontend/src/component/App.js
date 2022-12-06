@@ -46,7 +46,7 @@ function App() {
       .catch((err) => {
         console.log("Ошибка API при загрузке первоначальных данных!", err);
       });
-  }, []);
+  }, [isLoggedIn]);
 
   
   React.useEffect(() => {
@@ -128,7 +128,7 @@ function App() {
       .postNewCard(cardData)
       .then((newCard) => {
         console.log('newCard - ', newCard);
-        setCards([newCard, ...cards]);
+        setCards([...cards, newCard]);
         closeAllPopups();
       })
       .catch((err) => {

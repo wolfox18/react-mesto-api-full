@@ -9,8 +9,7 @@ export const create = (req, res, next) => {
   Card.create({ name, link, owner: req.user._id })
     .then((cardDocument) => {
       const card = cardDocument.toObject();
-      card.owner._id = req.user_id;
-      console.log(card);
+      card.owner = { _id: req.user._id };
       res.status(constants.HTTP_STATUS_CREATED).send(card);
     })
     .catch((err) => {

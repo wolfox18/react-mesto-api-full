@@ -8,7 +8,6 @@ export const auth = (req, res, next) => {
   }
 
   const token = authorization.replace('Bearer ', '');
-  console.log('token - ', token);
   let payload;
   const { JWT_SALT } = req.app.get('config');
   try {
