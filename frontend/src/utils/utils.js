@@ -21,4 +21,4 @@ export function checkResponce(res) {
     return res.json();
 }
 
-export const BASE_URL = "http://localhost:3100";
+export const BASE_URL = "https://api.nshikalenko.nomoredomains.club";
