@@ -51,9 +51,6 @@ app.use(auth);
 app.use('/', usersRouter);
 app.use('/', cardsRouter);
 
-//  celebrate validation
-app.use(errors());
-
 //  page not found route
 app.use('*', (req, res, next) => next(new NotFoundError('Страница не найдена')));
 
@@ -64,6 +61,9 @@ app.use((err, req, res, next) => {
   else res.status(constants.HTTP_STATUS_INTERNAL_SERVER_ERROR).send({ message: 'Неизвестная ошибка' });
   next();
 });
+
+//  celebrate validation
+app.use(errors());
 
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
