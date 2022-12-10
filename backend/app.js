@@ -5,7 +5,6 @@ import { errors } from 'celebrate';
 import { constants } from 'http2';
 import dotenv from 'dotenv';
 import path from 'path';
-import { fileURLToPath } from 'url';
 import cors from 'cors';
 import { usersRouter } from './routes/users.js';
 import { cardsRouter } from './routes/cards.js';
@@ -15,12 +14,11 @@ import { NotFoundError } from './utils/errors.js';
 import { requestLogger, errorLogger } from './middlewares/logger.js';
 
 const { PORT = 3100 } = process.env;
-export const dirname = path.dirname(fileURLToPath(import.meta.url));
-const config = dotenv.config({ path: path.resolve(dirname, '.env.common') }).parsed;
-if (!config) {
-  throw new Error('Config not found');
-}
-config.NODE_ENV = process.env.NODE_ENV || 'development';
+const config = dotenv.config({
+  path: path
+    .resolve(process.env.NODE_ENV === 'production' ? '.env' : '.env.common'),
+})
+  .parsed;
 
 const app = express();
 
@@ -56,15 +54,15 @@ app.use('*', (req, res, next) => next(new NotFoundError('Страница не �
 
 //  error handler
 app.use(errorLogger);
+
+//  celebrate validation
+app.use(errors());
+
 app.use((err, req, res, next) => {
   if (err.statusCode) res.status(err.statusCode).send({ message: err.message });
   else res.status(constants.HTTP_STATUS_INTERNAL_SERVER_ERROR).send({ message: 'Неизвестная ошибка' });
   next();
 });
-
-//  celebrate validation
-app.use(errors());
-
 app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
 });

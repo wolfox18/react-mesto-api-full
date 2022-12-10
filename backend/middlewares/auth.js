@@ -4,7 +4,8 @@ import { UnauthorizedError } from '../utils/errors.js';
 export const auth = (req, res, next) => {
   const { authorization } = req.headers;
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    return (new UnauthorizedError('Необходима авторизация'));
+    next(new UnauthorizedError('Необходима авторизация'));
+    return;
   }
 
   const token = authorization.replace('Bearer ', '');
@@ -14,9 +15,9 @@ export const auth = (req, res, next) => {
   try {
     payload = jwt.verify(token, JWT_SALT);
     req.user = payload;
-    return next();
+    next();
   } catch (err) {
     next(new UnauthorizedError('Необходима авторизация'));
-    return next();
+    next();
   }
 };
